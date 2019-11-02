@@ -7,7 +7,10 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
+import io.swagger.annotations.ApiModel;
+
 @Entity
+@ApiModel(description = "Employee details. ")
 public class Employee {
 
 	@Id
