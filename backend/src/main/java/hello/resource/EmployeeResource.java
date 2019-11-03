@@ -7,6 +7,7 @@ import javax.validation.Valid;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -27,7 +28,8 @@ public class EmployeeResource {
 	@Autowired
 	private ModelMapper modelMapper;
 
-	@GetMapping("/sortEmployeesByColumn")
+	@CrossOrigin(origins = "http://localhost:4200")
+    @GetMapping("/sortEmployeesByColumn")
 	public ResponseEntity<?> findEmployeesSorted(@Valid @RequestParam(required = false) Employee.columnNames column,
 			@Valid @RequestParam(required = false) SortOrder sortOrder) {
 		try {
@@ -38,7 +40,8 @@ public class EmployeeResource {
 		}
 	}
 
-	@PostMapping("/createEmployee")
+	@CrossOrigin(origins = "http://localhost:4200")
+    @PostMapping("/createEmployee")
 	public ResponseEntity<?> create(@RequestBody EmployeeDto employeeDto) {
 		return ResponseEntity.ok().body(employeeService.createEmployee(modelMapper.map(employeeDto, Employee.class)));
 	}
