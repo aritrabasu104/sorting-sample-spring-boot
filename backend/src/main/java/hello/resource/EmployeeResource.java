@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 import hello.dto.EmployeeDto;
 import hello.model.Employee;
 import hello.service.EmployeeService;
+import io.swagger.annotations.ApiOperation;
 import util.SortOrder;
 
 @RestController
@@ -28,6 +29,7 @@ public class EmployeeResource {
 	@Autowired
 	private ModelMapper modelMapper;
 
+	@ApiOperation(value = "sorts All Employees with the sorting order and column name if provided")
 	@CrossOrigin(origins = "http://localhost:4200")
     @GetMapping("/sortEmployeesByColumn")
 	public ResponseEntity<?> findEmployeesSorted(@Valid @RequestParam(required = false) Employee.columnNames column,
@@ -40,6 +42,7 @@ public class EmployeeResource {
 		}
 	}
 
+	@ApiOperation(value = "creates Employee in Database")
 	@CrossOrigin(origins = "http://localhost:4200")
     @PostMapping("/createEmployee")
 	public ResponseEntity<?> create(@RequestBody EmployeeDto employeeDto) {
