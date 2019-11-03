@@ -22,12 +22,6 @@ public class EmployeeServiceImpl implements EmployeeService {
 		return employeeRepository.save(employee);
 	}
 
-	@Override
-	public Employee findEmployee(String name) throws Exception {
-
-		return employeeRepository.findByName(name).get(0);
-
-	}
 
 	@Override
 	public List<Employee> findEmployeesSortedByColumn(columnNames column, SortOrder sortOrder) {
